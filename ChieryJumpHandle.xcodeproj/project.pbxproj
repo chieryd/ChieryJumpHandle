@@ -28,6 +28,9 @@
 		29889F7120036C2D004BC221 /* libChieryJumpHandle.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libChieryJumpHandle.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		29889F7420036C2E004BC221 /* ChieryJumpHandle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChieryJumpHandle.h; sourceTree = "<group>"; };
 		29889F7520036C2E004BC221 /* ChieryJumpHandle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChieryJumpHandle.m; sourceTree = "<group>"; };
+		29889F7D20036C87004BC221 /* ChieryJumpHandlePrt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChieryJumpHandlePrt.h; sourceTree = "<group>"; };
+		29889F7E20036CA8004BC221 /* ChieryJumpHandleResponsePrt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChieryJumpHandleResponsePrt.h; sourceTree = "<group>"; };
+		29889F7F20036DA4004BC221 /* jumpMap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = jumpMap.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +63,11 @@
 		29889F7320036C2E004BC221 /* ChieryJumpHandle */ = {
 			isa = PBXGroup;
 			children = (
+				29889F7F20036DA4004BC221 /* jumpMap.plist */,
 				29889F7420036C2E004BC221 /* ChieryJumpHandle.h */,
 				29889F7520036C2E004BC221 /* ChieryJumpHandle.m */,
+				29889F7D20036C87004BC221 /* ChieryJumpHandlePrt.h */,
+				29889F7E20036CA8004BC221 /* ChieryJumpHandleResponsePrt.h */,
 			);
 			path = ChieryJumpHandle;
 			sourceTree = "<group>";
