@@ -5,9 +5,9 @@
 	<key>chieryiphone</key>
 	<dict>
 		<key>business1</key>
-		<string>Business1</string>
+		<string>Business1JumpHandle</string>
 		<key>business2</key>
-		<string>Business2</string>
+		<string>Business2JumpHandle</string>
 	</dict>
 </dict>
 </plist>
