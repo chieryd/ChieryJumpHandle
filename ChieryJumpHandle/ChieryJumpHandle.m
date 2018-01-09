@@ -72,7 +72,8 @@
                withOpenURL:(NSURL *)url
                    urlData:(NSDictionary *)urlData
                   userInfo:(id)userInfo {
-    if ([responseDelg respondsToSelector:@selector(jumpHandleResponse:responseData:withOpenURL:urlData:userInfo:)]) {
+    if ([responseDelg respondsToSelector:@selector(jumpHandleResponseData:withOpenURL:urlData:userInfo:)]
+        && [responseDelg conformsToProtocol:@protocol(ChieryJumpHandleResponsePrt)]) {
         [responseDelg jumpHandleResponseData:responseData withOpenURL:url urlData:urlData userInfo:userInfo];
     }
 }
