@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "ChieryJumpHandle"
-  s.version      = "0.0.6.rc"
+  s.version      = "0.0.6.beta"
   s.summary      = "ChieryJumpHandle"
 
   # This description is used to generate tags and improve search results.
