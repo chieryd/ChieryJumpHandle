@@ -6,9 +6,25 @@
 	objectVersion = 48;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		C09E96902007515F004CDD44 /* ChieryJumpHandle_Universal */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C09E96932007515F004CDD44 /* Build configuration list for PBXAggregateTarget "ChieryJumpHandle_Universal" */;
+			buildPhases = (
+				C09E969420075173004CDD44 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = ChieryJumpHandle_Universal;
+			productName = ChieryJumpHandle_Universal;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		29889F7620036C2E004BC221 /* ChieryJumpHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 29889F7520036C2E004BC221 /* ChieryJumpHandle.m */; };
 		29889F7720036C2E004BC221 /* ChieryJumpHandle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29889F7420036C2E004BC221 /* ChieryJumpHandle.h */; };
+		C09E969920075B3D004CDD44 /* ChieryJumpHandlePrt.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29889F7D20036C87004BC221 /* ChieryJumpHandlePrt.h */; };
+		C09E969A20075B3D004CDD44 /* ChieryJumpHandleResponsePrt.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29889F7E20036CA8004BC221 /* ChieryJumpHandleResponsePrt.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,6 +34,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				C09E969920075B3D004CDD44 /* ChieryJumpHandlePrt.h in CopyFiles */,
+				C09E969A20075B3D004CDD44 /* ChieryJumpHandleResponsePrt.h in CopyFiles */,
 				29889F7720036C2E004BC221 /* ChieryJumpHandle.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,6 +123,10 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
+					C09E96902007515F004CDD44 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 29889F6C20036C2D004BC221 /* Build configuration list for PBXProject "ChieryJumpHandle" */;
@@ -120,9 +142,26 @@
 			projectRoot = "";
 			targets = (
 				29889F7020036C2D004BC221 /* ChieryJumpHandle */,
+				C09E96902007515F004CDD44 /* ChieryJumpHandle_Universal */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C09E969420075173004CDD44 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TARGET_NAME=\"ChieryJumpHandle\"\n// Step 1. clean\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}-iphoneos\"\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\"\necho \"!!!Will remove folder ${OBJROOT}\"\nrm -rf \"${OBJROOT}\"\n# Step 2. Build Device and Simulator versions\nxcodebuild -project ChieryJumpHandle.xcodeproj -scheme ${TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n// Step 3. check\nif [ ! -e \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${TARGET_NAME}.a\" ]\nthen\necho \"Build ${TARGET_NAME} for device arch failed\"\nexit -1\nfi\nxcodebuild -project ChieryJumpHandle.xcodeproj -scheme ${TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphonesimulator BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" -destination 'platform=iOS Simulator,name=iPhone 6s'\n// check\nif [ ! -e \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${TARGET_NAME}.a\" ]\nthen\necho \"Build ${TARGET_NAME} for iphonesimulator arch failed\"\nexit -1\nfi\n# Step 4. define output folder environment variable\nif [ -n \"$StaticLibrary\" ]; then\nUNIVERSAL_OUTPUTFOLDER=$StaticLibrary\nelse\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\nfi\n\n# Step 5. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${TARGET_NAME}.a\"\n\necho \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${TARGET_NAME}.a\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		29889F6D20036C2D004BC221 /* Sources */ = {
@@ -264,6 +303,22 @@
 			};
 			name = Release;
 		};
+		C09E96912007515F004CDD44 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C09E96922007515F004CDD44 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -281,6 +336,15 @@
 			buildConfigurations = (
 				29889F7B20036C2E004BC221 /* Debug */,
 				29889F7C20036C2E004BC221 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C09E96932007515F004CDD44 /* Build configuration list for PBXAggregateTarget "ChieryJumpHandle_Universal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C09E96912007515F004CDD44 /* Debug */,
+				C09E96922007515F004CDD44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
