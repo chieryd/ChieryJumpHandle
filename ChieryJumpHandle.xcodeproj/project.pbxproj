@@ -25,6 +25,9 @@
 		C09E96B820077125004CDD44 /* ChieryJumpHandlePrt.h in Headers */ = {isa = PBXBuildFile; fileRef = 29889F7D20036C87004BC221 /* ChieryJumpHandlePrt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C09E96B920077125004CDD44 /* ChieryJumpHandleResponsePrt.h in Headers */ = {isa = PBXBuildFile; fileRef = 29889F7E20036CA8004BC221 /* ChieryJumpHandleResponsePrt.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C09E96C720077212004CDD44 /* ChieryJumpHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 29889F7520036C2E004BC221 /* ChieryJumpHandle.m */; };
+		C09E96C82007775F004CDD44 /* ChieryJumpHandle.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29889F7420036C2E004BC221 /* ChieryJumpHandle.h */; };
+		C09E96C92007775F004CDD44 /* ChieryJumpHandlePrt.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29889F7D20036C87004BC221 /* ChieryJumpHandlePrt.h */; };
+		C09E96CA2007775F004CDD44 /* ChieryJumpHandleResponsePrt.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 29889F7E20036CA8004BC221 /* ChieryJumpHandleResponsePrt.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +37,9 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				C09E96C82007775F004CDD44 /* ChieryJumpHandle.h in CopyFiles */,
+				C09E96C92007775F004CDD44 /* ChieryJumpHandlePrt.h in CopyFiles */,
+				C09E96CA2007775F004CDD44 /* ChieryJumpHandleResponsePrt.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,8 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				29889F7320036C2E004BC221 /* ChieryJumpHandle */,
-				C09E96A1200770A4004CDD44 /* ChieryJumpHandle */,
-				C09E96BF2007713C004CDD44 /* ChieryJumpHandle_a */,
 				29889F7220036C2D004BC221 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,23 +99,9 @@
 				29889F7520036C2E004BC221 /* ChieryJumpHandle.m */,
 				29889F7D20036C87004BC221 /* ChieryJumpHandlePrt.h */,
 				29889F7E20036CA8004BC221 /* ChieryJumpHandleResponsePrt.h */,
-			);
-			path = ChieryJumpHandle;
-			sourceTree = "<group>";
-		};
-		C09E96A1200770A4004CDD44 /* ChieryJumpHandle */ = {
-			isa = PBXGroup;
-			children = (
 				C09E96A3200770A4004CDD44 /* Info.plist */,
 			);
 			path = ChieryJumpHandle;
-			sourceTree = "<group>";
-		};
-		C09E96BF2007713C004CDD44 /* ChieryJumpHandle_a */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ChieryJumpHandle_a;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,7 +219,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "TARGET_NAME=\"ChieryJumpHandle_a\"\n// Step 1. clean\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}-iphoneos\"\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\"\necho \"!!!Will remove folder ${OBJROOT}\"\nrm -rf \"${OBJROOT}\"\n# Step 2. Build Device and Simulator versions\nxcodebuild -project ChieryJumpHandle.xcodeproj -scheme ${TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n// Step 3. check\nif [ ! -e \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${TARGET_NAME}.a\" ]\nthen\necho \"Build ${TARGET_NAME} for device arch failed\"\nexit -1\nfi\nxcodebuild -project ChieryJumpHandle.xcodeproj -scheme ${TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphonesimulator BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" -destination 'platform=iOS Simulator,name=iPhone 6s'\n// check\nif [ ! -e \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${TARGET_NAME}.a\" ]\nthen\necho \"Build ${TARGET_NAME} for iphonesimulator arch failed\"\nexit -1\nfi\n# Step 4. define output folder environment variable\nif [ -n \"$StaticLibrary\" ]; then\nUNIVERSAL_OUTPUTFOLDER=$StaticLibrary\nelse\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\nfi\n\n# Step 5. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${TARGET_NAME}.a\"\n\necho \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${TARGET_NAME}.a\"";
+			shellScript = "TARGET_NAME=\"ChieryJumpHandle_a\"\n// Step 1. clean\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}-iphoneos\"\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\"\necho \"!!!Will remove folder ${OBJROOT}\"\nrm -rf \"${OBJROOT}\"\n# Step 2. Build Device and Simulator versions\nxcodebuild -project ChieryJumpHandle.xcodeproj -scheme ${TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\"\n// Step 3. check\nif [ ! -e \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${TARGET_NAME}.a\" ]\nthen\necho \"Build ${TARGET_NAME} for device arch failed\"\nexit -1\nfi\nxcodebuild -project ChieryJumpHandle.xcodeproj -scheme ${TARGET_NAME} ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphonesimulator BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" -destination 'platform=iOS Simulator,name=iPhone 6s'\n// check\nif [ ! -e \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${TARGET_NAME}.a\" ]\nthen\necho \"Build ${TARGET_NAME} for iphonesimulator arch failed\"\nexit -1\nfi\n# Step 4. define output folder environment variable\nif [ -n \"$StaticLibrary\" ]; then\nUNIVERSAL_OUTPUTFOLDER=$StaticLibrary\nelse\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n# make sure the output directory exists\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\nfi\n\n# Step 5. Create universal binary file using lipo\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/lib${TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/lib${TARGET_NAME}.a\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/lib${TARGET_NAME}.a\"\n\necho \"${UNIVERSAL_OUTPUTFOLDER}/lib${TARGET_NAME}.a\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -301,7 +291,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -350,7 +340,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
