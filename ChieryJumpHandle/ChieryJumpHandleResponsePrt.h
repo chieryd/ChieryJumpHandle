@@ -8,7 +8,8 @@
 
 /**
  *  JumpHandleResponsePrt 跳转回调协议
- *
+ *s
+ 
  *  想接收URL跳转返回数据的对象需要实现的协议，只有实现了该协议才会被调用
  */
 @protocol ChieryJumpHandleResponsePrt <NSObject>
