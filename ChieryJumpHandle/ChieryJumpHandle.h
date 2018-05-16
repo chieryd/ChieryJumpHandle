@@ -18,7 +18,7 @@
 /**
  *  通过URL来调用界面
  *
- *  @param url 跳转到的URL，通常为 qunariphone://hotel/xxx 的形式
+ *  @param url 跳转到的URL，通常为 proxy://router/xxx 的形式
  *
  *  @return 返回是否有模块接受该URL并进行处理，处理URL可能是异步的，不能保证线程安全
  */
@@ -27,7 +27,7 @@
 /**
  *  通过URL和urlData来调用界面
  *
- *  @param url          跳转到的URL，通常为 qunariphone://hotel/xxx 的形式
+ *  @param url          跳转到的URL，通常为 proxy://router/xxx 的形式
  *  @param urldata      处理URL所需使用的数据
  *  @param responseDelg 回调对象
  *  @param userInfo     自定义对象
